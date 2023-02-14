@@ -26,7 +26,8 @@ public class Main {
         int numberOfPowers = keyboard.nextInt();
         printTable(numberOfPowers);
         System.out.println("What is your first name?");
-        // The method next reads a String, including the newline character.
+        // nextLine: Java reads the first string it finds in the buffer, including a newline character
+        // (This means nextLine will "consume" a newline character it finds in the buffer.)
         String firstName = keyboard.next();
         System.out.println("What is your last name?");
         String lastName = keyboard.nextLine();
