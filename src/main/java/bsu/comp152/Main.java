@@ -6,7 +6,7 @@ public class Main {
         printProceed("y");
         printProceed("n");
         printProceed("Y");
-        powerWhile(16);
+        powerWhile(-3);
 
         int day = 1;
         switch (day){
@@ -23,20 +23,43 @@ public class Main {
 
         Scanner keyboard = new Scanner(System.in);
         System.out.println("How many powers of two do you want?");
+        /*
+         * When the user types keystrokes at the keyboard, those keystrokes are stored in an area of memory that is sometimes called the keyboard buffer.
+         * Note Pressing the Enter key causes a newline character to be stored in the keyboard buffer.
+         * Note nextInt will remove and return the first integer it finds in the keyboard buffer.
+         */
         int numberOfPowers = keyboard.nextInt();
         printTable(numberOfPowers);
         System.out.println("What is your first name?");
         // nextLine: Java reads the first string it finds in the buffer, including a newline character
         // (This means nextLine will "consume" a newline character it finds in the buffer.)
-        String firstName = keyboard.next();
+        String firstName = keyboard.nextLine();
         System.out.println("What is your last name?");
-        String lastName = keyboard.nextLine();
+        /*
+        Sometimes a string contains a sequence of words or other items of data separated by spaces or other characters.
+        In programming terms, such items as these are known as tokens.
+        Note next will remove and return the first String token it finds in the keyboard buffer. It does not read newline characters as a token. It considers spaces to separate tokens.
+         */
+        String lastName = keyboard.next();
         System.out.println("What is your age?");
         int age = keyboard.nextInt();
+        // Use printf to print a formatted string.
+        // Use %b as a placeholder for a boolean.
+        // Use %s as a placeholder for a String.
         System.out.printf("If the value is %b, then do " +
-                "the action", true);
-
-
+                "the action\n", true);
+        System.out.printf("Your first name is %s, and your " +
+                "last name is %s\n", firstName, lastName);
+        // Use %f as a placeholder for a decimal number.
+        System.out.printf("Length is %f and width is %f\n", Math.sqrt(5), Math.sqrt(2));
+        // We can specify the number of decimal digits, like 2:
+        System.out.printf("Length is %.2f and width is %.2f\n", Math.sqrt(5), Math.sqrt(2));
+        // We could allocate 12 spaces for a decimal number with 2 digits:
+        System.out.printf("Length is %12.2f and width is %12.2f\n", Math.sqrt(5), Math.sqrt(2));
+        // Use %d as a placeholder for an integer ("digit"?).
+        System.out.printf("Length is %d and width is %d\n", 100000, 10000);
+        // We can include a comma in an integer.
+        System.out.printf("Length is %,d and width is %,d\n", 100000, 10000);
     }
 
     /**
@@ -64,6 +87,9 @@ public class Main {
      * @param n
      */
     public static void powerWhile(int n) {
+        if (n < 0){
+            throw new IllegalArgumentException();
+        }
         int power = 1;
         int count = 0;
         while (power <= n / 2) {
