@@ -87,8 +87,8 @@ public class Main {
      * @param n
      */
     public static void powerWhile(int n) {
-        if (n < 0){
-            throw new IllegalArgumentException();
+        if (n <= 0){
+            throw new IllegalArgumentException("Must take log base 2 of a positive number");
         }
         int power = 1;
         int count = 0;
